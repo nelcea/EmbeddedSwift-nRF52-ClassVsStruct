@@ -44,7 +44,18 @@ add_dependencies(app_swift syscall_list_h_target)
 target_compile_options(app_swift PRIVATE
     -parse-as-library
 
-    -Osize
+#    -Osize # Fails
+    -O # Works
+#    -Onone # Fails
+#    -Ounchecked # Works
+#    -Oplayground # Fails
+
+# swiftc
+#-Onone                  Compile without any optimization
+#-Oplayground            Compile with optimizations appropriate for a playground
+#-Osize                  Compile with optimizations and target small code size
+#-Ounchecked             Compile with optimizations and remove runtime safety checks
+#-O                      Compile with optimizations
 
     -Xfrontend -disable-stack-protector
 
